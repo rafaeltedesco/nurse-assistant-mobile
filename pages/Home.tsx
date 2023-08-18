@@ -1,12 +1,19 @@
 import { ScrollView, View } from 'react-native';
-import CardOption from '../components/AntDesignCardOption';
 import { Link } from 'react-router-native';
 import AntDesignCardOption from '../components/AntDesignCardOption';
 import IoniconsCardOption from '../components/IoniconsCardOption';
 import headerStyles from '../mocks/headerStyles';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+import Header from '../components/Header';
 
 export default function Home() {
+  const user = useContext(UserContext);
   return (
+    <>
+    <Link to={"/profile"}>
+        <Header showDivider messages={[`Boas vindas, ${ user.username }`]}/>
+    </Link>
     <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'space-between', marginVertical:40}}>
         <View style={{ gap: 20}}>
           <View>
@@ -21,5 +28,6 @@ export default function Home() {
           </View>
         </View>
       </ScrollView>
+      </>
   )
 }

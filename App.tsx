@@ -10,11 +10,11 @@ import { UserContext } from './contexts/UserContext';
 import Medicine from './pages/Medicine';
 import Water from './pages/Water';
 import PrivateRoute from './auth/PrivateRoute';
-import Login from './pages/Login';
 import AuthLogin from './pages/AuthLogin';
+import UserProfile from './pages/UserProfile';
 
 export default function App() {
-  const [user, setUser] = React.useState({ username: ''});
+  const [user, setUser] = React.useState({ username: 'Rafael'});
   const [fontsLoaded] = useFonts({
     Inter_200ExtraLight,
     Inter_300Light,
@@ -33,27 +33,26 @@ export default function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <View style={styles.container}>
-        <StatusBar />
-        <NativeRouter>
-          { hasToRenderHeader() && <Link to="/">
-              <Header showDivider messages={[`Boas vindas, ${ user.username }`]}/>
-            </Link>
-          }
-          <Routes>
-            <Route path="/" Component={PrivateRoute}>
-              <Route path="/" Component={Home} />
-            </Route>
-            <Route path="/medicine" Component={PrivateRoute}>
-              <Route path="/medicine" Component={Medicine} />
-            </Route>
-            <Route path="/water" Component={PrivateRoute}>
-              <Route path="/water" Component={Water} />
-            </Route>
-            <Route path="/login" Component={AuthLogin} />
-        </Routes>
-      </NativeRouter>
-      </View>
+        <View style={styles.container}>
+          <StatusBar />
+          <NativeRouter>
+            <Routes>
+              <Route path="/" Component={PrivateRoute}>
+                <Route path="/" Component={Home} />
+              </Route>
+              <Route path="/medicine" Component={PrivateRoute}>
+                <Route path="/medicine" Component={Medicine} />
+              </Route>
+              <Route path="/water" Component={PrivateRoute}>
+                <Route path="/water" Component={Water} />
+              </Route>
+              <Route path="/profile" Component={PrivateRoute}>
+                <Route path="/profile" Component={UserProfile} />
+              </Route>
+              <Route path="/login" Component={AuthLogin} />
+          </Routes>
+        </NativeRouter>
+        </View>
     </UserContext.Provider>
   );
 }

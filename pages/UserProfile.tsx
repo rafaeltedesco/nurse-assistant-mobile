@@ -4,7 +4,7 @@ import { Link } from 'react-router-native';
 import { UserContext } from '../contexts/UserContext';
 import Header from '../components/Header';
 
-export default function Medicine() {
+export default function UserProfile() {
   const user = useContext(UserContext);
   return (
     <>
@@ -13,7 +13,7 @@ export default function Medicine() {
     </Link>
     <View>
       <Text>
-        Medicine
+        Profile
       </Text>
     </View>
     </>
