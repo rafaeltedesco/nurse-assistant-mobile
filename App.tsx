@@ -1,12 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import Header from './components/Header';
-import { NativeRouter, Route, Routes, Link } from 'react-router-native';
-
+import { NativeRouter, Route, Routes } from 'react-router-native';
+import { View, StyleSheet } from 'react-native';
 import { useFonts, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light, Inter_200ExtraLight } from '@expo-google-fonts/inter';
 import Home from './pages/Home';
-import { UserContext } from './contexts/UserContext';
+import { User, UserContext } from './contexts/UserContext';
 import Medicine from './pages/Medicine';
 import Water from './pages/Water';
 import PrivateRoute from './auth/PrivateRoute';
@@ -14,7 +12,7 @@ import AuthLogin from './pages/AuthLogin';
 import UserProfile from './pages/UserProfile';
 
 export default function App() {
-  const [user, setUser] = React.useState({ username: 'Rafael'});
+  const [user, setUser] = React.useState<User>({ username: ''});
   const [fontsLoaded] = useFonts({
     Inter_200ExtraLight,
     Inter_300Light,
@@ -27,12 +25,8 @@ export default function App() {
     return null
   }
 
-  const hasToRenderHeader = () => {
-    return user.username.length > 0;
-  }
-
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{ user, setUser }}>
         <View style={styles.container}>
           <StatusBar />
           <NativeRouter>

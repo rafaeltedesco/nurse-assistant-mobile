@@ -5,11 +5,11 @@ import { UserContext } from '../contexts/UserContext';
 import Header from '../components/Header';
 
 export default function UserProfile() {
-  const user = useContext(UserContext);
+  const context = useContext(UserContext);
   return (
     <>
      <Link to={"/"}>
-        <Header showDivider messages={[`Boas vindas, ${ user.username }`]}/>
+        <Header showDivider messages={[`Boas vindas, ${ context!.user.username }`]}/>
     </Link>
     <View>
       <Text>
