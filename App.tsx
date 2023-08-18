@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import Header from './components/Header';
 import { NativeRouter, Route, Routes, Link } from 'react-router-native';
 
-import { useFonts, Inter_600SemiBold, Inter_500Medium } from '@expo-google-fonts/inter';
+import { useFonts, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light, Inter_200ExtraLight } from '@expo-google-fonts/inter';
 import Home from './pages/Home';
 import { UserContext } from './contexts/UserContext';
 import Medicine from './pages/Medicine';
@@ -15,6 +15,9 @@ import Login from './pages/Login';
 export default function App() {
   const [user, setUser] = React.useState({ username: ''});
   const [fontsLoaded] = useFonts({
+    Inter_200ExtraLight,
+    Inter_300Light,
+    Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold
   })
@@ -33,7 +36,7 @@ export default function App() {
         <StatusBar />
         <NativeRouter>
           { hasToRenderHeader() && <Link to="/">
-              <Header />
+              <Header showDivider message={`Boas vindas, ${ user.username }`}/>
             </Link>
           }
           <Routes>

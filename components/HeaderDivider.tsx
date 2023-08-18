@@ -1,14 +1,20 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, StyleProp, ViewStyle } from 'react-native';
 import headerStyles from '../mocks/headerStyles';
-import { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
 
-export default function HeaderDivider() {
-  const user = useContext(UserContext);
+type HeaderDividerProps = {
+  message: string;
+  style?: StyleProp<ViewStyle>
+}
+
+export default function HeaderDivider({ message, style }: HeaderDividerProps) {
+  const dividerStyles: Array<StyleProp<ViewStyle>> = [styles.divider];
+  if (style) {
+    dividerStyles.push(style);
+  }
   return (
-    <View style={styles.divider}>
+    <View style={dividerStyles} >
       <Text style={styles.subtitle}>
-        Boas vindas, { user.username }
+        { message }
       </Text>
     </View>
   )

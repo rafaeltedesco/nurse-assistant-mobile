@@ -3,7 +3,12 @@ import { AntDesign } from '@expo/vector-icons';
 import headerStyles from '../mocks/headerStyles';
 import HeaderDivider from './HeaderDivider';
 
-export default function Header() {
+type HeaderProps = {
+  showDivider?: boolean;
+  message: string;
+}
+
+export default function Header({ showDivider = false, message }: HeaderProps) {
   return (
     <>
       <View style={styles.header}>
@@ -12,7 +17,7 @@ export default function Header() {
         </Text>
         <AntDesign name="user" size={42} color="white" style={styles.icon}/>
       </View>
-      <HeaderDivider />
+      { showDivider && <HeaderDivider message={message} /> }
     </>
   )
 }
