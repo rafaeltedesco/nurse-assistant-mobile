@@ -11,6 +11,7 @@ import Medicine from './pages/Medicine';
 import Water from './pages/Water';
 import PrivateRoute from './auth/PrivateRoute';
 import Login from './pages/Login';
+import AuthLogin from './pages/AuthLogin';
 
 export default function App() {
   const [user, setUser] = React.useState({ username: ''});
@@ -36,7 +37,7 @@ export default function App() {
         <StatusBar />
         <NativeRouter>
           { hasToRenderHeader() && <Link to="/">
-              <Header showDivider message={`Boas vindas, ${ user.username }`}/>
+              <Header showDivider messages={[`Boas vindas, ${ user.username }`]}/>
             </Link>
           }
           <Routes>
@@ -49,7 +50,7 @@ export default function App() {
             <Route path="/water" Component={PrivateRoute}>
               <Route path="/water" Component={Water} />
             </Route>
-            <Route path="/login" Component={Login} />
+            <Route path="/login" Component={AuthLogin} />
         </Routes>
       </NativeRouter>
       </View>

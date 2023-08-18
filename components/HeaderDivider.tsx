@@ -2,20 +2,28 @@ import { StyleSheet, View, Text, StyleProp, ViewStyle } from 'react-native';
 import headerStyles from '../mocks/headerStyles';
 
 type HeaderDividerProps = {
-  message: string;
+  messages: Array<string>;
   style?: StyleProp<ViewStyle>
 }
 
-export default function HeaderDivider({ message, style }: HeaderDividerProps) {
+export default function HeaderDivider({ messages, style }: HeaderDividerProps) {
   const dividerStyles: Array<StyleProp<ViewStyle>> = [styles.divider];
   if (style) {
     dividerStyles.push(style);
   }
-  return (
-    <View style={dividerStyles} >
-      <Text style={styles.subtitle}>
+
+  const renderMessages = () => {
+    return messages.map((message, idx) => {
+      return (
+        <Text key={idx} style={styles.subtitle}>
         { message }
-      </Text>
+        </Text>
+      )
+    })
+  }
+  return (
+    <View style={[...dividerStyles ]} >
+      { renderMessages() }
     </View>
   )
 }

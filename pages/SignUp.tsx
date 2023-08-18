@@ -2,12 +2,16 @@ import { View, Text, TextInput, TouchableHighlight, KeyboardAvoidingView, Scroll
 import headerStyles from '../mocks/headerStyles';
 import HeaderDivider from '../components/HeaderDivider';
 
-export default function Login() {
+export default function SignUp() {
   return (
     <>
-    <HeaderDivider messages={['Acesse sua conta']} />
-    <ScrollView contentContainerStyle={{ backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 10}}>
+    <HeaderDivider messages={['Novo Cadastro']} style={{ paddingTop: 30}}/>
+        <ScrollView contentContainerStyle={{ backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center', padding: 20, borderRadius: 10}}>
           <View style={{width: '100%', alignItems: 'flex-start', gap: 20, borderColor: '#eee', borderWidth: 2, borderRadius: 10, padding: 40}}>
+          <View style={{ width: '100%'}}>
+              <Text style={{ fontSize: 18}}>Usuário</Text>
+              <TextInput placeholder="Digite seu nome de usuário aqui..." style={{ fontSize: 16, padding: 10, borderColor: '#eee', borderWidth: 1, borderRadius: 10, marginVertical: 5 }}/>
+            </View>
             <View style={{ width: '100%'}}>
               <Text style={{ fontSize: 18}}>Email</Text>
               <TextInput placeholder="Digite seu email aqui..." style={{ fontSize: 16, padding: 10, borderColor: '#eee', borderWidth: 1, borderRadius: 10, marginVertical: 5 }}/>
@@ -23,6 +27,7 @@ export default function Login() {
             </View>
           </View>
         </ScrollView>
+        
     </>
   )
 }

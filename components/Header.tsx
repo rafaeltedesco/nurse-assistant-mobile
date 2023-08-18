@@ -5,10 +5,10 @@ import HeaderDivider from './HeaderDivider';
 
 type HeaderProps = {
   showDivider?: boolean;
-  message: string;
+  messages: Array<string>;
 }
 
-export default function Header({ showDivider = false, message }: HeaderProps) {
+export default function Header({ showDivider = false, messages }: HeaderProps) {
   return (
     <>
       <View style={styles.header}>
@@ -17,7 +17,7 @@ export default function Header({ showDivider = false, message }: HeaderProps) {
         </Text>
         <AntDesign name="user" size={42} color="white" style={styles.icon}/>
       </View>
-      { showDivider && <HeaderDivider message={message} /> }
+      { showDivider && <HeaderDivider messages={messages} /> }
     </>
   )
 }
